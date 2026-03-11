@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ProfessorAI | AI Empires</title>
+    <title>ProfessorAI | AI Empires 😈</title>
     
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -107,9 +107,17 @@
             background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
             animation: gradient-move 5s linear infinite;
         }
+        .headline-gradient-saffron {
+            background: linear-gradient(90deg, #FF9933 0%, #000080 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+        }
         .dark .headline-gradient {
             background: #00D0FF; -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
-            text-shadow: 0 0 20px rgba(0, 208, 255, 0.4); animation: none;
+            text-shadow: 0 0 25px rgba(0, 208, 255, 0.6); animation: none;
+        }
+        .dark .headline-gradient-saffron {
+            background: #00D0FF; -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+            text-shadow: 0 0 20px rgba(0, 208, 255, 0.4);
         }
 
         /* Multi-Color Pulse Glows */
@@ -152,10 +160,10 @@
         .bento-card:hover::before { opacity: 1; }
 
         /* Animated Module Backgrounds */
-        .module-bg { position: absolute; inset: 0; z-index: 0; opacity: 0.1; transition: opacity 0.4s; pointer-events: none; overflow: hidden; mix-blend-mode: multiply;}
-        .dark .module-bg { opacity: 0.15; mix-blend-mode: screen;}
-        .bento-card:hover .module-bg { opacity: 0.25; }
-        .dark .bento-card:hover .module-bg { opacity: 0.4; }
+        .module-bg { position: absolute; inset: 0; z-index: 0; opacity: 0.15; transition: opacity 0.4s; pointer-events: none; overflow: hidden; mix-blend-mode: multiply;}
+        .dark .module-bg { opacity: 0.25; mix-blend-mode: screen;}
+        .bento-card:hover .module-bg { opacity: 0.35; }
+        .dark .bento-card:hover .module-bg { opacity: 0.5; }
 
         .anim-grid { background-image: linear-gradient(to right, currentcolor 1px, transparent 1px), linear-gradient(to bottom, currentcolor 1px, transparent 1px); background-size: 20px 20px; animation: bg-scroll 3s linear infinite; }
         .anim-mandala::before, .anim-mandala::after { content: ''; position: absolute; inset: -20%; border: 2px dashed currentcolor; border-radius: 50%; animation: spin-slow 10s linear infinite; opacity: 0.5; }
@@ -222,7 +230,7 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         }
         @media(min-width: 768px){ .social-pill { padding: 12px 24px; font-size: 1rem; gap: 10px; } }
-        .dark .social-pill { background: rgba(10,10,10,0.8); border-color: #1f2937; color: #94a3b8; }
+        .dark .social-pill { background: rgba(10,10,10,0.8); border-color: #1f2937; color: #94a3b8; box-shadow: none; }
         .social-pill::after {
             content: ''; position: absolute; inset: -2px; z-index: -2; border-radius: inherit;
             background: var(--multi-glow); background-size: 300% 300%;
@@ -233,7 +241,7 @@
             transform: scale(0); transition: transform 0.3s ease; z-index: -1;
         }
         .dark .social-pill::before { background: #00D0FF; }
-        .social-pill:hover { color: white; border-color: transparent; transform: translateY(-3px) scale(1.05) rotate(1deg); }
+        .social-pill:hover { color: white; border-color: transparent; transform: translateY(-3px) scale(1.05); }
         .dark .social-pill:hover { color: #030303; }
         .social-pill:hover::after { opacity: 0.7; }
         .social-pill:hover::before { transform: scale(1); }
@@ -297,35 +305,36 @@
     <section class="relative min-h-[100dvh] flex flex-col items-center justify-center text-center px-4 overflow-hidden z-10 pt-32 pb-16">
         <div class="bg-grid"></div>
 
-        <div class="max-w-4xl mx-auto flex flex-col items-center w-full relative z-10">
+        <div class="max-w-5xl mx-auto flex flex-col items-center w-full relative z-10">
             
-            <div class="gsap-hero mb-6 md:mb-8 inline-flex items-center px-5 sm:px-6 py-1.5 sm:py-2 rounded-full border border-india-navy/20 dark:border-cyber-cyan/30 bg-white/70 dark:bg-[#0a0a0a]/80 text-india-navy dark:text-cyber-cyan font-bold tracking-widest text-[10px] sm:text-xs uppercase shadow-sm dark:box-glow-cyan backdrop-blur-md transition-colors duration-500 interactive">
-                <span class="w-2 h-2 rounded-full bg-india-green dark:bg-[#006A7A] mr-2 sm:mr-3"></span> ENGINEERED BY EAST INDIA AUTOMATION
+            <div class="gsap-hero mb-6 md:mb-8 inline-flex items-center px-4 sm:px-6 py-1.5 sm:py-2 rounded-full border border-india-navy/20 dark:border-cyber-cyan/30 bg-white/70 dark:bg-transparent text-india-navy dark:text-cyber-cyan font-bold tracking-widest text-[9px] sm:text-[11px] md:text-xs uppercase shadow-sm dark:box-glow-cyan backdrop-blur-md transition-colors duration-500 interactive">
+                <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-india-navy dark:bg-cyber-cyan mr-2 sm:mr-3"></span> ENGINEERED BY EAST INDIA AUTOMATION
             </div>
             
             <div class="gsap-hero flex flex-col items-center justify-center mb-6 md:mb-8 w-full">
-                <h1 class="font-oswald text-6xl sm:text-7xl md:text-8xl lg:text-[110px] font-black leading-[1.05] tracking-tight text-slate-800 dark:text-white uppercase w-full transition-colors duration-500">
+                <!-- Mobile-safe typography scaling (text-5xl to text-[110px]) with tight leading to match design -->
+                <h1 class="font-oswald text-[3.5rem] sm:text-7xl md:text-8xl lg:text-[110px] font-black leading-[1] tracking-tight text-slate-800 dark:text-white uppercase w-full transition-colors duration-500 px-2">
                     I DON'T JUST<br>WRITE CODE.
                 </h1>
-                <h1 class="font-oswald text-6xl sm:text-7xl md:text-8xl lg:text-[110px] font-black leading-[1.05] tracking-tight headline-gradient uppercase w-full mt-2">
+                <h1 class="font-oswald text-[3.5rem] sm:text-7xl md:text-8xl lg:text-[110px] font-black leading-[1] tracking-tight headline-gradient uppercase w-full px-2 mt-1 md:mt-2">
                     I BUILD AI<br>EMPIRES.
                 </h1>
             </div>
             
-            <p class="gsap-hero text-base sm:text-lg md:text-2xl text-slate-600 dark:text-cyber-muted max-w-3xl font-inter font-medium mb-10 md:mb-12 leading-relaxed transition-colors duration-500">
+            <p class="gsap-hero text-sm sm:text-base md:text-2xl text-slate-600 dark:text-cyber-muted max-w-3xl font-inter font-medium mb-10 md:mb-12 leading-relaxed transition-colors duration-500 bg-white/40 dark:bg-black/40 backdrop-blur-md p-3 sm:p-4 rounded-xl mx-2 shadow-sm">
                 Hi, I'm <strong class="text-india-navy dark:text-white font-bold">Rajib Singh (AKA ProfessorAI)</strong>. I engineer high-velocity AI SaaS platforms, generative workflows, and intelligent digital ecosystems that convert friction into leverage.
             </p>
             
             <div class="gsap-hero mt-2 w-full sm:w-auto px-6">
                 <div class="active-glow rounded-lg">
-                    <a href="#portfolio" class="btn-primary text-lg md:text-2xl interactive w-full sm:w-auto font-oswald tracking-wide">
-                        VIEW THE ARSENAL <i class="fa-solid fa-arrow-down ml-2"></i>
+                    <a href="#portfolio" class="btn-primary text-lg md:text-xl interactive w-full font-oswald tracking-wider">
+                        VIEW THE ARSENAL <i class="fa-solid fa-arrow-down ml-2 animate-bounce"></i>
                     </a>
                 </div>
             </div>
 
             <!-- Init indicator -->
-            <div class="gsap-fade absolute bottom-4 md:bottom-10 text-slate-400 dark:text-cyber-muted font-inter text-[10px] tracking-[0.4em] uppercase flex flex-col items-center opacity-70">
+            <div class="gsap-fade absolute bottom-4 md:bottom-10 text-slate-400 dark:text-cyber-muted font-inter text-[8px] sm:text-[10px] tracking-[0.4em] uppercase flex flex-col items-center opacity-70">
                 INITIALIZE
             </div>
         </div>
@@ -390,7 +399,7 @@
 
                 <!-- 0. ZeroGPT Core (New Heavy Hitter) -->
                 <div class="hover-glow tilt-card lg:col-span-2 xl:col-span-2">
-                    <div class="bento-card gsap-arsenal-card interactive border-india-navy dark:border-cyber-cyan shadow-[0_0_30px_rgba(0,208,255,0.1)] dark:shadow-[0_0_30px_rgba(0,208,255,0.1)]">
+                    <div class="bento-card gsap-arsenal-card interactive border-india-navy dark:border-cyber-cyan shadow-[0_0_30px_rgba(0,0,128,0.1)] dark:shadow-[0_0_30px_rgba(0,208,255,0.15)]">
                         <div class="module-anim anim-nodes text-slate-500/40 dark:text-cyber-cyan/20 module-bg"></div>
                         <div class="card-content justify-center h-full">
                             <div class="flex justify-between items-start mb-4 md:mb-6">
@@ -638,7 +647,7 @@
                 
                 <!-- Venture 1: Call Forensics -->
                 <div class="hover-glow gsap-flagship tilt-card">
-                    <div class="bento-card p-0 interactive">
+                    <div class="bento-card p-0 interactive border-teal-200 dark:border-teal-900/50">
                         <div class="grid grid-cols-1 lg:grid-cols-2 h-full relative z-10 flex-col-reverse lg:flex-row">
                             <div class="p-6 sm:p-8 md:p-12 flex flex-col justify-center pointer-events-none">
                                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-teal-50 dark:bg-cyber-dark border border-teal-200 dark:border-cyber-border text-teal-600 dark:text-teal-400 font-bold text-[10px] uppercase mb-4 md:mb-6 tracking-widest w-fit transition-colors duration-500 shadow-sm">
@@ -689,7 +698,7 @@
 
                 <!-- Venture 3: Not A Financial Bot (SHADOW) -->
                 <div class="hover-glow gsap-flagship tilt-card">
-                    <div class="bento-card p-0 interactive">
+                    <div class="bento-card p-0 interactive border-emerald-200 dark:border-emerald-900/50">
                         <div class="grid grid-cols-1 lg:grid-cols-2 h-full relative z-10 flex-col-reverse lg:flex-row">
                             <div class="p-6 sm:p-8 md:p-12 flex flex-col justify-center pointer-events-none">
                                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-50 dark:bg-cyber-dark border border-emerald-200 dark:border-cyber-border text-india-green dark:text-emerald-400 font-bold text-[10px] uppercase mb-4 md:mb-6 tracking-widest w-fit transition-colors duration-500 shadow-sm">
@@ -716,7 +725,7 @@
 
                 <!-- Venture 4: I Love Sundarban -->
                 <div class="hover-glow gsap-flagship tilt-card">
-                    <div class="bento-card p-0 interactive">
+                    <div class="bento-card p-0 interactive border-rose-200 dark:border-rose-900/50">
                         <div class="grid grid-cols-1 lg:grid-cols-2 h-full relative z-10">
                             <div class="h-48 sm:h-64 lg:h-full w-full border-b lg:border-b-0 lg:border-r border-india-navy/10 dark:border-cyber-border bg-rose-50 dark:bg-rose-950/10 relative overflow-hidden flex items-center justify-center order-1 lg:order-1 transition-colors duration-500">
                                 <div class="absolute w-[200%] h-[200%] bg-[radial-gradient(circle,rgba(244,63,94,0.15)_0%,transparent_60%)] animate-spin-reverse"></div>
@@ -740,7 +749,7 @@
 
                 <!-- Venture 5: Again India (Sankhya AI) -->
                 <div class="hover-glow gsap-flagship tilt-card">
-                    <div class="bento-card p-0 interactive">
+                    <div class="bento-card p-0 interactive border-orange-200 dark:border-orange-900/50">
                         <div class="grid grid-cols-1 lg:grid-cols-2 h-full relative z-10 flex-col-reverse lg:flex-row">
                             <div class="p-6 sm:p-8 md:p-12 flex flex-col justify-center pointer-events-none">
                                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-orange-50 dark:bg-cyber-dark border border-orange-200 dark:border-cyber-border text-india-saffron dark:text-orange-400 font-bold text-[10px] uppercase mb-4 md:mb-6 tracking-widest w-fit transition-colors duration-500 shadow-sm">
@@ -805,7 +814,7 @@
                 </a>
                 <!-- Additional Project Links -->
                 <a href="https://chat.worldoftexts.com/" target="_blank" class="social-pill hover-glow interactive flex-grow sm:flex-grow-0 justify-center">
-                    <i class="fa-solid fa-network-wired text-lg md:text-xl social-icon text-cyber-cyan transition-colors"></i> <span class="social-icon transition-colors">ZeroGPT</span>
+                    <i class="fa-solid fa-network-wired text-lg md:text-xl social-icon text-india-navy dark:text-cyber-cyan transition-colors"></i> <span class="social-icon transition-colors">ZeroGPT</span>
                 </a>
                 <a href="https://callforensics.eastindiaautomation.com/" target="_blank" class="social-pill hover-glow interactive flex-grow sm:flex-grow-0 justify-center">
                     <i class="fa-solid fa-shield-halved text-lg md:text-xl social-icon text-teal-500 transition-colors"></i> <span class="social-icon transition-colors">Call Forensics</span>
