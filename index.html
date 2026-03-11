@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProfessorAI | East India Automation Portfolio</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { oswald: ['Oswald', 'sans-serif'], inter: ['Inter', 'sans-serif'] },
+                    colors: {
+                        cyber: { black: '#050505', dark: '#0f172a', neon: '#06b6d4', purple: '#8b5cf6', matrix: '#10b981' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS for Cyberpunk/Premium Tech Vibe -->
+    <style>
+        body { background-color: #050505; color: #f8fafc; overflow-x: hidden; }
+        
+        /* Typography */
+        h1, h2, h3, .font-heading { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+        p, span, a, .font-body { font-family: 'Inter', sans-serif; }
+
+        /* Gradients */
+        .text-gradient-cyan { background: linear-gradient(90deg, #06b6d4, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .text-gradient-matrix { background: linear-gradient(90deg, #10b981, #047857); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Hero Background */
+        .grid-bg {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+            position: absolute; inset: 0; z-index: -1;
+        }
+
+        /* Running Glow Border Card */
+        .ai-card-wrapper {
+            position: relative; border-radius: 16px; padding: 2px; overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #1e293b;
+            height: 100%;
+        }
+        .ai-card-wrapper::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: conic-gradient(from 0deg, transparent 0%, transparent 70%, #06b6d4 80%, #8b5cf6 90%, #10b981 100%);
+            animation: rotate-border 4s linear infinite;
+            opacity: 0.3; transition: opacity 0.3s ease;
+        }
+        .ai-card-wrapper:hover { transform: translateY(-5px); box-shadow: 0 20px 40px -10px rgba(6, 182, 212, 0.3); }
+        .ai-card-wrapper:hover::before { opacity: 1; }
+        .ai-card-inner {
+            background: #0f172a; border-radius: 14px; height: 100%; width: 100%; position: relative; z-index: 1;
+            display: flex; flex-direction: column; padding: 2rem;
+        }
+
+        @keyframes rotate-border { 100% { transform: rotate(360deg); } }
+
+        /* CTA Button */
+        .btn-cyber {
+            background: transparent; color: #06b6d4; border: 2px solid #06b6d4;
+            padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 700; text-transform: uppercase;
+            transition: all 0.3s ease; position: relative; overflow: hidden; z-index: 1;
+            display: inline-flex; items-center; justify-content: center; gap: 0.5rem;
+        }
+        .btn-cyber::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: #06b6d4; z-index: -1; transition: left 0.3s ease;
+        }
+        .btn-cyber:hover { color: #000; box-shadow: 0 0 20px rgba(6, 182, 212, 0.5); }
+        .btn-cyber:hover::before { left: 0; }
+
+        /* Flagship Image Hover */
+        .flagship-img-container { overflow: hidden; border-radius: 12px; position: relative; }
+        .flagship-img-container img { transition: transform 0.5s ease; filter: grayscale(80%) contrast(1.2); }
+        .flagship-card:hover .flagship-img-container img { transform: scale(1.05); filter: grayscale(0%) contrast(1.1); }
+        .flagship-overlay {
+            position: absolute; inset: 0; background: linear-gradient(to top, #050505 10%, transparent 80%);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- HERO SECTION -->
+    <header class="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-4 overflow-hidden">
+        <div class="grid-bg"></div>
+        
+        <div class="absolute top-0 w-full p-6 flex justify-between items-center z-20 opacity-0" id="nav-reveal">
+            <div class="font-heading text-2xl tracking-widest text-cyber-neon">E.I.A.</div>
+            <a href="#portfolio" class="font-body text-sm font-bold uppercase tracking-widest text-slate-400 hover:text-white transition-colors">Access Arsenal</a>
+        </div>
+
+        <div class="z-10 max-w-5xl mx-auto flex flex-col items-center gsap-hero">
+            <div class="mb-6 inline-flex items-center px-4 py-2 rounded-full border border-cyber-neon/30 bg-cyber-neon/10 text-cyber-neon font-bold tracking-widest text-xs uppercase shadow-[0_0_15px_rgba(6,182,212,0.2)]">
+                <i class="fa-solid fa-microchip mr-2"></i> Engineered by East India Automation
+            </div>
+            
+            <h1 class="text-6xl md:text-8xl font-black leading-none mb-6 text-white tracking-tight">
+                I Don't Just Write Code.<br>
+                <span class="text-gradient-cyan">I Build AI Empires.</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-slate-400 max-w-3xl font-medium mb-10 leading-relaxed">
+                Hi, I'm <strong class="text-white">Rajib Singh (AKA ProfessorAI)</strong>. I engineer high-velocity AI SaaS platforms, generative workflows, and intelligent digital ecosystems that convert friction into leverage.
+            </p>
+            
+            <div class="flex gap-4">
+                <a href="#portfolio" class="px-8 py-4 bg-cyber-neon text-black font-heading text-xl rounded-md hover:bg-white transition-all duration-300 shadow-[0_0_30px_rgba(6,182,212,0.4)] hover:shadow-[0_0_40px_rgba(255,255,255,0.6)]">
+                    View The Arsenal <i class="fa-solid fa-arrow-down ml-2"></i>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Animated Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce text-slate-500 z-10">
+            <span class="font-body text-xs tracking-widest uppercase mb-2">Initialize</span>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+    </header>
+
+    <main id="portfolio" class="relative z-10">
+
+        <!-- SECTION: WORLD OF TEXTS ECOSYSTEM -->
+        <section class="py-24 px-4 sm:px-6 lg:px-8 max-w-screen-2xl mx-auto">
+            <div class="text-center mb-20 gsap-section">
+                <h2 class="text-5xl md:text-6xl font-black text-white mb-4">The <span class="text-gradient-cyan">World of Texts</span> Suite</h2>
+                <p class="text-xl text-slate-400 max-w-2xl mx-auto">A comprehensive, interconnected ecosystem of generative AI tools, rapid inference engines, and automated workflows.</p>
+                <div class="w-24 h-1 bg-cyber-neon mx-auto mt-8 rounded-full shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                
+                <!-- 1. Main WoT -->
+                <div class="ai-card-wrapper gsap-card">
+                    <div class="ai-card-inner">
+                        <i class="fa-solid fa-globe text-4xl text-cyber-neon mb-6"></i>
+                        <h3 class="text-2xl font-bold text-white mb-3">World of Texts</h3>
+                        <p class="text-slate-400 mb-8 flex-grow">The ultimate AI playground. The flagship hub connecting a vast array of generative tools, utilities, and intelligent assistants under one roof.</p>
+                        <a href="https://www.worldoftexts.com/" target="_blank" class="btn-cyber mt-auto">Deploy Hub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <!-- 2. WOW -->
+                <div class="ai-card-wrapper gsap-card">
+                    <div class="ai-card-inner">
+                        <i class="fa-solid fa-bolt-lightning text-4xl text-yellow-400 mb-6"></i>
+                        <h3 class="text-2xl font-bold text-white mb-3">WOW</h3>
+                        <p class="text-slate-400 mb-8 flex-grow">The jaw-drop generator. Pushing the absolute boundaries of what AI can output, delivering shock-and-awe results for creative generation.</p>
+                        <a href="https://wow.worldoftexts.com/" target="_blank" class="btn-cyber mt-auto">Experience WOW <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <!-- 3. AudioFactory -->
+                <div class="ai-card-wrapper gsap-card">
+                    <div class="ai-card-inner">
+                        <i class="fa-solid fa-headphones-simple text-4xl text-purple-500 mb-6"></i>
+                        <h3 class="text-2xl font-bold text-white mb-3">Audio Factory</h3>
+                        <p class="text-slate-400 mb-8 flex-grow">Turn dead text into studio-quality voiceovers in milliseconds. High-fidelity TTS and audio generation scaled for production.</p>
+                        <a href="https://audiofactory.worldoftexts.com/" target="_blank" class="btn-cyber mt-auto">Synthesize Audio <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <!-- 4. RAG -->
+                <div class="ai-card-wrapper gsap-card">
+                    <div class="ai-card-inner">
+                        <i class="fa-solid fa-database text-4xl text-cyber-matrix mb-6"></i>
+                        <h3 class="text-2xl font-bold text-white mb-3">RAG Intelligence</h3>
+                        <p class="text-slate-400 mb-8 flex-grow">Stop searching. Start conversing. Enterprise-grade Retrieval-Augmented Generation to inject your private data directly into the AI's brain.</p>
+                        <a href="https://rag.worldoftexts.com/" target="_blank" class="btn-cyber mt-auto">Chat With Data <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <!-- 5. Automation -->
+                <div class="ai-card-wrapper gsap-card">
+                    <div class="ai-card-inner">
+                        <i class="fa-solid fa-robot text-4xl text-orange-500 mb-6"></i>
+                        <h3 class="text-2xl font-bold text-white mb-3">AI Automation</h3>
+                        <p class="text-slate-400 mb-8 flex-grow">Replace repetitive manual tasks with autonomous AI workflows. The engine room that turns human effort into algorithmic precision.</p>
+                        <a href="https://automation.worldoftexts.com/" target="_blank" class="btn-cyber mt-auto">Automate Now <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <!-- 6. Groq -->
+                <div class="ai-card-wrapper gsap-card">
+                    <div class="ai-card-inner">
+                        <i class="fa-solid fa-gauge-high text-4xl text-red-500 mb-6"></i>
+                        <h3 class="text-2xl font-bold text-white mb-3">Groq Inference</h3>
+                        <p class="text-slate-400 mb-8 flex-grow">Need for speed. Lightning-fast AI inference utilizing cutting-edge Groq LPU technology for zero-latency token generation.</p>
+                        <a href="https://groq.worldoftexts.com/" target="_blank" class="btn-cyber mt-auto">Ignite Speed <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <!-- 7. Canvas -->
+                <div class="ai-card-wrapper gsap-card">
+                    <div class="ai-card-inner">
+                        <i class="fa-solid fa-pen-ruler text-4xl text-pink-500 mb-6"></i>
+                        <h3 class="text-2xl font-bold text-white mb-3">AI Canvas</h3>
+                        <p class="text-slate-400 mb-8 flex-grow">A limitless visual workspace. Blend AI-assisted brainstorming, node-based design, and freeform creativity on an infinite digital board.</p>
+                        <a href="https://canvas.worldoftexts.com/" target="_blank" class="btn-cyber mt-auto">Open Canvas <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <!-- 8. Enhance -->
+                <div class="ai-card-wrapper gsap-card">
+                    <div class="ai-card-inner">
+                        <i class="fa-solid fa-wand-magic-sparkles text-4xl text-blue-400 mb-6"></i>
+                        <h3 class="text-2xl font-bold text-white mb-3">Enhance AI</h3>
+                        <p class="text-slate-400 mb-8 flex-grow">Upscale, refine, and perfect. AI-driven resolution and quality enhancement for text, images, and audio assets.</p>
+                        <a href="https://enhance.worldoftexts.com/" target="_blank" class="btn-cyber mt-auto">Enhance Assets <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <!-- 9. Console -->
+                <div class="ai-card-wrapper gsap-card">
+                    <div class="ai-card-inner">
+                        <i class="fa-solid fa-terminal text-4xl text-slate-300 mb-6"></i>
+                        <h3 class="text-2xl font-bold text-white mb-3">Developer Console</h3>
+                        <p class="text-slate-400 mb-8 flex-grow">Mission control. A centralized dashboard for API key management, model routing, analytics, and administrative oversight.</p>
+                        <a href="https://console.worldoftexts.com/" target="_blank" class="btn-cyber mt-auto">Access Console <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <!-- 10. GemBooth -->
+                <div class="ai-card-wrapper gsap-card">
+                    <div class="ai-card-inner">
+                        <i class="fa-solid fa-camera-retro text-4xl text-teal-400 mb-6"></i>
+                        <h3 class="text-2xl font-bold text-white mb-3">GemBooth</h3>
+                        <p class="text-slate-400 mb-8 flex-grow">Interactive, real-time AI experiences powered by Google Gemini. A smart booth for multimodal image and text interactions.</p>
+                        <a href="https://gembooth.worldoftexts.com/" target="_blank" class="btn-cyber mt-auto">Enter Booth <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <!-- 11. Tools -->
+                <div class="ai-card-wrapper gsap-card">
+                    <div class="ai-card-inner">
+                        <i class="fa-solid fa-toolbox text-4xl text-amber-500 mb-6"></i>
+                        <h3 class="text-2xl font-bold text-white mb-3">Micro Tools</h3>
+                        <p class="text-slate-400 mb-8 flex-grow">Your Swiss Army knife of AI utilities. A highly optimized collection of single-purpose micro-tools for daily digital friction.</p>
+                        <a href="https://tools.worldoftexts.com/" target="_blank" class="btn-cyber mt-auto">Open Toolkit <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <!-- 12. PastForward -->
+                <div class="ai-card-wrapper gsap-card">
+                    <div class="ai-card-inner">
+                        <i class="fa-solid fa-clock-rotate-left text-4xl text-indigo-400 mb-6"></i>
+                        <h3 class="text-2xl font-bold text-white mb-3">PastForward</h3>
+                        <p class="text-slate-400 mb-8 flex-grow">Reimagine history. Innovative AI tools bridging historical context with futuristic generative capabilities.</p>
+                        <a href="https://pastforward.worldoftexts.com/" target="_blank" class="btn-cyber mt-auto">Time Travel <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION: FLAGSHIP VENTURES -->
+        <section class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-800">
+            <div class="text-center mb-20 gsap-section">
+                <h2 class="text-5xl md:text-6xl font-black text-white mb-4">Flagship <span class="text-gradient-matrix">Ventures</span></h2>
+                <p class="text-xl text-slate-400 max-w-2xl mx-auto">Standalone brands and platforms engineered from the ground up to dominate specific niches and industries.</p>
+                <div class="w-24 h-1 bg-cyber-matrix mx-auto mt-8 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.8)]"></div>
+            </div>
+
+            <div class="space-y-16">
+                
+                <!-- Venture 1: East India Automation -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center flagship-card gsap-reveal-left">
+                    <div class="order-2 lg:order-1">
+                        <div class="inline-block px-3 py-1 rounded-sm bg-blue-900/50 text-blue-400 font-bold text-xs uppercase mb-4 tracking-widest border border-blue-800">The Agency Core</div>
+                        <h3 class="text-4xl font-bold text-white mb-4">East India Automation</h3>
+                        <p class="text-xl text-slate-400 mb-6">The powerhouse agency behind the code. Building intelligent digital ecosystems, AI-driven automation, and scalable tech infrastructure for modern businesses.</p>
+                        <a href="https://www.eastindiaautomation.in/" target="_blank" class="btn-cyber !border-blue-500 !text-blue-500 before:bg-blue-500 hover:text-white">Visit The Agency <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                    <div class="order-1 lg:order-2 flagship-img-container h-80 border border-slate-700">
+                        <div class="flagship-overlay z-10"></div>
+                        <!-- Placeholder using high-tech imagery -->
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" alt="East India Automation" class="w-full h-full object-cover">
+                        <div class="absolute bottom-6 left-6 z-20 font-heading text-3xl text-white tracking-widest opacity-50">E.I.A.</div>
+                    </div>
+                </div>
+
+                <!-- Venture 2: Not A Financial Bot -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center flagship-card gsap-reveal-right">
+                    <div class="flagship-img-container h-80 border border-slate-700">
+                        <div class="flagship-overlay z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=2070&auto=format&fit=crop" alt="Financial Charts" class="w-full h-full object-cover">
+                        <i class="fa-solid fa-chart-line absolute bottom-6 right-6 z-20 text-6xl text-green-500 opacity-30"></i>
+                    </div>
+                    <div>
+                        <div class="inline-block px-3 py-1 rounded-sm bg-green-900/50 text-green-400 font-bold text-xs uppercase mb-4 tracking-widest border border-green-800">FinTech AI</div>
+                        <h3 class="text-4xl font-bold text-white mb-4">Not A Financial Bot</h3>
+                        <p class="text-xl text-slate-400 mb-6">Hyper-intelligent market analysis, charting, and financial insights driven by AI. We provide the algorithmic intelligence; you make the decisions.</p>
+                        <a href="https://www.notafinancialbot.com/" target="_blank" class="btn-cyber !border-green-500 !text-green-500 before:bg-green-500 hover:text-black">Analyze Markets <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Venture 3: I Love Sundarban -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center flagship-card gsap-reveal-left">
+                    <div class="order-2 lg:order-1">
+                        <div class="inline-block px-3 py-1 rounded-sm bg-emerald-900/50 text-emerald-400 font-bold text-xs uppercase mb-4 tracking-widest border border-emerald-800">Smart Tourism</div>
+                        <h3 class="text-4xl font-bold text-white mb-4">I Love Sundarban</h3>
+                        <p class="text-xl text-slate-400 mb-6">A digital love letter and smart tourism hub for the majestic Sundarbans. Modernizing booking infrastructure and ecological awareness through tech.</p>
+                        <a href="https://www.ilovesundarban.com/" target="_blank" class="btn-cyber !border-emerald-500 !text-emerald-500 before:bg-emerald-500 hover:text-black">Explore The Delta <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                    <div class="order-1 lg:order-2 flagship-img-container h-80 border border-slate-700">
+                        <div class="flagship-overlay z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1621245643445-667dc9c73bf5?q=80&w=1974&auto=format&fit=crop" alt="Mangrove Forest" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <!-- Venture 4: Again India -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center flagship-card gsap-reveal-right">
+                    <div class="flagship-img-container h-80 border border-slate-700">
+                        <div class="flagship-overlay z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1512314889357-e157c22f938d?q=80&w=2071&auto=format&fit=crop" alt="Digital Commerce" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <div class="inline-block px-3 py-1 rounded-sm bg-orange-900/50 text-orange-400 font-bold text-xs uppercase mb-4 tracking-widest border border-orange-800">E-Commerce & Brand</div>
+                        <h3 class="text-4xl font-bold text-white mb-4">Again India</h3>
+                        <p class="text-xl text-slate-400 mb-6">Revitalizing Indian commerce with cutting-edge digital infrastructure. A brand platform built for speed, conversion, and seamless user experience.</p>
+                        <a href="https://www.againindia.com/" target="_blank" class="btn-cyber !border-orange-500 !text-orange-500 before:bg-orange-500 hover:text-black">Visit Storefront <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER / CTA -->
+    <footer class="relative py-20 px-4 border-t border-slate-800 bg-[#020202] text-center overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] z-0"></div>
+        
+        <div class="relative z-10 max-w-4xl mx-auto gsap-footer">
+            <h2 class="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight">Stop Thinking. <br><span class="text-gradient-cyan">Start Automating.</span></h2>
+            <p class="text-xl text-slate-400 mb-10">You've seen the arsenal. Now leverage the architect. Let's build a system that scales your output infinitely.</p>
+            
+            <a href="mailto:contact@eastindiaautomation.in" class="inline-block px-10 py-5 bg-cyber-neon text-black font-heading text-2xl rounded-md hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_0_40px_rgba(6,182,212,0.4)] mb-16">
+                Hire ProfessorAI
+            </a>
+
+            <div class="border-t border-slate-800 pt-10 flex flex-col items-center">
+                <div class="font-heading text-3xl tracking-widest text-white mb-2">EAST INDIA AUTOMATION</div>
+                <p class="text-slate-500 font-body text-sm tracking-widest uppercase">
+                    Designed & Developed by <strong class="text-cyber-neon">Rajib Singh (ProfessorAI)</strong>
+                </p>
+                <p class="text-slate-600 text-xs mt-4">&copy; 2026. All Systems Operational.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GSAP Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Hero Animations
+            gsap.to("#nav-reveal", { opacity: 1, duration: 1, delay: 0.5 });
+            gsap.from(".gsap-hero > *", {
+                y: 30, opacity: 0, duration: 1, stagger: 0.15, ease: "power3.out"
+            });
+
+            // Section Headers
+            gsap.utils.toArray(".gsap-section").forEach(section => {
+                gsap.from(section, {
+                    scrollTrigger: { trigger: section, start: "top 80%" },
+                    y: 50, opacity: 0, duration: 0.8, ease: "power2.out"
+                });
+            });
+
+            // WoT Grid Cards (Staggered)
+            gsap.from(".gsap-card", {
+                scrollTrigger: { trigger: ".gsap-card", start: "top 85%" },
+                y: 50, opacity: 0, duration: 0.6, stagger: 0.1, ease: "power2.out"
+            });
+
+            // Flagship Left/Right Reveals
+            gsap.utils.toArray(".gsap-reveal-left").forEach(item => {
+                gsap.from(item, {
+                    scrollTrigger: { trigger: item, start: "top 80%" },
+                    x: -50, opacity: 0, duration: 0.8, ease: "power3.out"
+                });
+            });
+            gsap.utils.toArray(".gsap-reveal-right").forEach(item => {
+                gsap.from(item, {
+                    scrollTrigger: { trigger: item, start: "top 80%" },
+                    x: 50, opacity: 0, duration: 0.8, ease: "power3.out"
+                });
+            });
+
+            // Footer
+            gsap.from(".gsap-footer > *", {
+                scrollTrigger: { trigger: ".gsap-footer", start: "top 90%" },
+                y: 30, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power2.out"
+            });
+        });
+    </script>
+</body>
+</html>
