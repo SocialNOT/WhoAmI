@@ -113,7 +113,7 @@
         }
         .dark .headline-gradient {
             background: #00D0FF; -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
-            text-shadow: 0 0 25px rgba(0, 208, 255, 0.6); animation: none;
+            text-shadow: 0 0 20px rgba(0, 208, 255, 0.4); animation: none;
         }
         .dark .headline-gradient-saffron {
             background: #00D0FF; -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
@@ -160,10 +160,10 @@
         .bento-card:hover::before { opacity: 1; }
 
         /* Animated Module Backgrounds */
-        .module-bg { position: absolute; inset: 0; z-index: 0; opacity: 0.15; transition: opacity 0.4s; pointer-events: none; overflow: hidden; mix-blend-mode: multiply;}
-        .dark .module-bg { opacity: 0.25; mix-blend-mode: screen;}
-        .bento-card:hover .module-bg { opacity: 0.35; }
-        .dark .bento-card:hover .module-bg { opacity: 0.5; }
+        .module-bg { position: absolute; inset: 0; z-index: 0; opacity: 0.1; transition: opacity 0.4s; pointer-events: none; overflow: hidden; mix-blend-mode: multiply;}
+        .dark .module-bg { opacity: 0.15; mix-blend-mode: screen;}
+        .bento-card:hover .module-bg { opacity: 0.25; }
+        .dark .bento-card:hover .module-bg { opacity: 0.4; }
 
         .anim-grid { background-image: linear-gradient(to right, currentcolor 1px, transparent 1px), linear-gradient(to bottom, currentcolor 1px, transparent 1px); background-size: 20px 20px; animation: bg-scroll 3s linear infinite; }
         .anim-mandala::before, .anim-mandala::after { content: ''; position: absolute; inset: -20%; border: 2px dashed currentcolor; border-radius: 50%; animation: spin-slow 10s linear infinite; opacity: 0.5; }
@@ -213,14 +213,24 @@
         .btn-ghost:hover { background: #FF9933; color: white; border-color: #FF9933; transform: translateX(4px); }
         .dark .btn-ghost:hover { background: #1f2937; color: #00D0FF; border-color: #00D0FF; }
 
-        .highlight-text { position: relative; white-space: nowrap; z-index: 1; font-weight: 700; color: #000080; transition: color 0.3s ease; }
-        .dark .highlight-text { color: #fff; }
-        .highlight-text::after {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 30%;
-            background: rgba(255, 153, 51, 0.3); z-index: -1; transform: scaleX(0); transform-origin: right; transition: transform 0.5s ease;
+        /* Animated Highlighters (Adaptive & Multiline Safe) */
+        .highlight-text { 
+            position: relative; 
+            z-index: 1; 
+            font-weight: 700; 
+            color: #000080; 
+            transition: color 0.3s ease, background-size 0.5s ease;
+            background-image: linear-gradient(transparent 65%, rgba(255, 153, 51, 0.4) 65%);
+            background-size: 0% 100%;
+            background-repeat: no-repeat;
+            background-position: left center;
+            display: inline;
         }
-        .dark .highlight-text::after { background: rgba(0, 208, 255, 0.4); }
-        .bento-card:hover .highlight-text::after { transform: scaleX(1); transform-origin: left; }
+        .dark .highlight-text { 
+            color: #fff; 
+            background-image: linear-gradient(transparent 65%, rgba(0, 208, 255, 0.5) 65%);
+        }
+        .bento-card:hover .highlight-text { background-size: 100% 100%; }
 
         /* Social Pills */
         .social-pill {
@@ -241,7 +251,7 @@
             transform: scale(0); transition: transform 0.3s ease; z-index: -1;
         }
         .dark .social-pill::before { background: #00D0FF; }
-        .social-pill:hover { color: white; border-color: transparent; transform: translateY(-3px) scale(1.05); }
+        .social-pill:hover { color: white; border-color: transparent; transform: translateY(-3px) scale(1.05) rotate(1deg); }
         .dark .social-pill:hover { color: #030303; }
         .social-pill:hover::after { opacity: 0.7; }
         .social-pill:hover::before { transform: scale(1); }
@@ -280,7 +290,7 @@
     <!-- HEADER / NAVIGATION -->
     <header class="fixed top-0 w-full z-50 transition-all duration-300" id="main-header">
         <div class="w-full px-4 sm:px-6 md:px-12 py-3 md:py-4 flex justify-between items-center bg-white/80 dark:bg-cyber-black/80 backdrop-blur-xl border-b border-india-navy/10 dark:border-cyber-border transition-colors duration-500">
-            <div class="font-oswald text-xl md:text-3xl font-bold tracking-widest text-india-navy dark:text-cyber-cyan transition-colors duration-500 interactive">E.I.A. 🚀</div>
+            <div class="font-oswald text-xl md:text-3xl font-bold tracking-widest text-india-navy dark:text-cyber-cyan transition-colors duration-500 interactive">🧐 Who am I 🤔</div>
             
             <div class="flex items-center gap-4 md:gap-6">
                 <!-- Theme Toggle Button -->
@@ -305,36 +315,36 @@
     <section class="relative min-h-[100dvh] flex flex-col items-center justify-center text-center px-4 overflow-hidden z-10 pt-32 pb-16">
         <div class="bg-grid"></div>
 
-        <div class="max-w-5xl mx-auto flex flex-col items-center w-full relative z-10">
+        <div class="max-w-4xl mx-auto flex flex-col items-center w-full relative z-10">
             
-            <div class="gsap-hero mb-6 md:mb-8 inline-flex items-center px-4 sm:px-6 py-1.5 sm:py-2 rounded-full border border-india-navy/20 dark:border-cyber-cyan/30 bg-white/70 dark:bg-transparent text-india-navy dark:text-cyber-cyan font-bold tracking-widest text-[9px] sm:text-[11px] md:text-xs uppercase shadow-sm dark:box-glow-cyan backdrop-blur-md transition-colors duration-500 interactive">
-                <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-india-navy dark:bg-cyber-cyan mr-2 sm:mr-3"></span> ENGINEERED BY EAST INDIA AUTOMATION
+            <div class="gsap-hero mb-6 md:mb-8 inline-flex items-center px-5 sm:px-6 py-1.5 sm:py-2 rounded-full border border-india-navy/20 dark:border-cyber-cyan/30 bg-white/70 dark:bg-[#0a0a0a]/80 text-india-navy dark:text-cyber-cyan font-bold tracking-widest text-[10px] sm:text-xs uppercase shadow-sm dark:box-glow-cyan backdrop-blur-md transition-colors duration-500 interactive">
+                <span class="w-2 h-2 rounded-full bg-india-green dark:bg-[#006A7A] mr-2 sm:mr-3"></span> ENGINEERED BY EAST INDIA AUTOMATION
             </div>
             
             <div class="gsap-hero flex flex-col items-center justify-center mb-6 md:mb-8 w-full">
                 <!-- Mobile-safe typography scaling (text-5xl to text-[110px]) with tight leading to match design -->
-                <h1 class="font-oswald text-[3.5rem] sm:text-7xl md:text-8xl lg:text-[110px] font-black leading-[1] tracking-tight text-slate-800 dark:text-white uppercase w-full transition-colors duration-500 px-2">
+                <h1 class="font-oswald text-[3.5rem] sm:text-7xl md:text-8xl lg:text-[110px] font-black leading-[1.05] tracking-tight text-slate-800 dark:text-white uppercase w-full transition-colors duration-500 px-2">
                     I DON'T JUST<br>WRITE CODE.
                 </h1>
-                <h1 class="font-oswald text-[3.5rem] sm:text-7xl md:text-8xl lg:text-[110px] font-black leading-[1] tracking-tight headline-gradient uppercase w-full px-2 mt-1 md:mt-2">
+                <h1 class="font-oswald text-[3.5rem] sm:text-7xl md:text-8xl lg:text-[110px] font-black leading-[1.05] tracking-tight headline-gradient uppercase w-full px-2 mt-1 md:mt-2">
                     I BUILD AI<br>EMPIRES.
                 </h1>
             </div>
             
-            <p class="gsap-hero text-sm sm:text-base md:text-2xl text-slate-600 dark:text-cyber-muted max-w-3xl font-inter font-medium mb-10 md:mb-12 leading-relaxed transition-colors duration-500 bg-white/40 dark:bg-black/40 backdrop-blur-md p-3 sm:p-4 rounded-xl mx-2 shadow-sm">
+            <p class="gsap-hero text-sm sm:text-base md:text-2xl text-slate-600 dark:text-cyber-muted max-w-3xl font-inter font-medium mb-10 md:mb-12 leading-relaxed transition-colors duration-500">
                 Hi, I'm <strong class="text-india-navy dark:text-white font-bold">Rajib Singh (AKA ProfessorAI)</strong>. I engineer high-velocity AI SaaS platforms, generative workflows, and intelligent digital ecosystems that convert friction into leverage.
             </p>
             
             <div class="gsap-hero mt-2 w-full sm:w-auto px-6">
                 <div class="active-glow rounded-lg">
-                    <a href="#portfolio" class="btn-primary text-lg md:text-xl interactive w-full font-oswald tracking-wider">
-                        VIEW THE ARSENAL <i class="fa-solid fa-arrow-down ml-2 animate-bounce"></i>
+                    <a href="#portfolio" class="btn-primary text-lg md:text-xl interactive w-full sm:w-auto font-oswald tracking-wider">
+                        VIEW THE ARSENAL <i class="fa-solid fa-arrow-down ml-2"></i>
                     </a>
                 </div>
             </div>
 
             <!-- Init indicator -->
-            <div class="gsap-fade absolute bottom-4 md:bottom-10 text-slate-400 dark:text-cyber-muted font-inter text-[8px] sm:text-[10px] tracking-[0.4em] uppercase flex flex-col items-center opacity-70">
+            <div class="gsap-fade absolute bottom-4 md:bottom-10 text-slate-400 dark:text-cyber-muted font-inter text-[10px] tracking-[0.4em] uppercase flex flex-col items-center opacity-70">
                 INITIALIZE
             </div>
         </div>
@@ -397,7 +407,7 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8" id="arsenal-grid">
 
-                <!-- 0. ZeroGPT Core (New Heavy Hitter) -->
+                <!-- 0. ZeroGPT Core -->
                 <div class="hover-glow tilt-card lg:col-span-2 xl:col-span-2">
                     <div class="bento-card gsap-arsenal-card interactive border-india-navy dark:border-cyber-cyan shadow-[0_0_30px_rgba(0,0,128,0.1)] dark:shadow-[0_0_30px_rgba(0,208,255,0.15)]">
                         <div class="module-anim anim-nodes text-slate-500/40 dark:text-cyber-cyan/20 module-bg"></div>
@@ -648,6 +658,7 @@
                 <!-- Venture 1: Call Forensics -->
                 <div class="hover-glow gsap-flagship tilt-card">
                     <div class="bento-card p-0 interactive border-teal-200 dark:border-teal-900/50">
+                        <div class="module-anim anim-nodes text-teal-500/20 dark:text-teal-400/10 module-bg"></div>
                         <div class="grid grid-cols-1 lg:grid-cols-2 h-full relative z-10 flex-col-reverse lg:flex-row">
                             <div class="p-6 sm:p-8 md:p-12 flex flex-col justify-center pointer-events-none">
                                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-teal-50 dark:bg-cyber-dark border border-teal-200 dark:border-cyber-border text-teal-600 dark:text-teal-400 font-bold text-[10px] uppercase mb-4 md:mb-6 tracking-widest w-fit transition-colors duration-500 shadow-sm">
@@ -676,12 +687,13 @@
                 <!-- Venture 2: East India Automation -->
                 <div class="hover-glow gsap-flagship tilt-card">
                     <div class="bento-card p-0 interactive">
+                        <div class="module-anim anim-grid text-amber-500/10 dark:text-amber-400/10 module-bg"></div>
                         <div class="grid grid-cols-1 lg:grid-cols-2 h-full relative z-10">
                             <div class="h-48 sm:h-64 lg:h-full w-full border-b lg:border-b-0 lg:border-r border-india-navy/10 dark:border-cyber-border bg-slate-200 dark:bg-black relative overflow-hidden flex items-center justify-center transition-colors duration-500 order-1 lg:order-1">
                                 <div class="absolute inset-0 bg-[linear-gradient(rgba(0,0,128,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,128,0.1)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:30px_30px] [transform:perspective(500px)_rotateX(60deg)] animate-[bg-scroll_5s_linear_infinite]"></div>
                                 <div class="absolute inset-0 bg-gradient-to-t from-slate-200 dark:from-black to-transparent transition-colors duration-500"></div>
-                                <div class="absolute inset-0 bg-gradient-to-l from-white/90 dark:from-[rgba(10,10,10,0.85)] to-transparent lg:hidden transition-colors duration-500"></div>
-                                <div class="absolute inset-0 bg-gradient-to-r from-white/90 dark:from-[rgba(10,10,10,0.85)] to-transparent hidden lg:block transition-colors duration-500"></div>
+                                <div class="absolute inset-0 bg-gradient-to-b from-white/90 dark:from-[rgba(10,10,10,0.85)] to-transparent lg:hidden transition-colors duration-500"></div>
+                                <div class="absolute inset-0 bg-gradient-to-l from-white/90 dark:from-[rgba(10,10,10,0.85)] to-transparent hidden lg:block transition-colors duration-500"></div>
                                 <i class="fa-solid fa-industry text-6xl md:text-8xl text-amber-500/30 z-10 absolute drop-shadow-2xl animate-bounce-x"></i>
                             </div>
                             <div class="p-6 sm:p-8 md:p-12 flex flex-col justify-center pointer-events-none order-2 lg:order-2">
@@ -699,6 +711,7 @@
                 <!-- Venture 3: Not A Financial Bot (SHADOW) -->
                 <div class="hover-glow gsap-flagship tilt-card">
                     <div class="bento-card p-0 interactive border-emerald-200 dark:border-emerald-900/50">
+                        <div class="module-anim anim-laser text-emerald-500/20 dark:text-emerald-400/10 module-bg"></div>
                         <div class="grid grid-cols-1 lg:grid-cols-2 h-full relative z-10 flex-col-reverse lg:flex-row">
                             <div class="p-6 sm:p-8 md:p-12 flex flex-col justify-center pointer-events-none">
                                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-50 dark:bg-cyber-dark border border-emerald-200 dark:border-cyber-border text-india-green dark:text-emerald-400 font-bold text-[10px] uppercase mb-4 md:mb-6 tracking-widest w-fit transition-colors duration-500 shadow-sm">
@@ -726,6 +739,7 @@
                 <!-- Venture 4: I Love Sundarban -->
                 <div class="hover-glow gsap-flagship tilt-card">
                     <div class="bento-card p-0 interactive border-rose-200 dark:border-rose-900/50">
+                        <div class="module-anim anim-radar text-rose-500/20 dark:text-rose-400/10 module-bg"></div>
                         <div class="grid grid-cols-1 lg:grid-cols-2 h-full relative z-10">
                             <div class="h-48 sm:h-64 lg:h-full w-full border-b lg:border-b-0 lg:border-r border-india-navy/10 dark:border-cyber-border bg-rose-50 dark:bg-rose-950/10 relative overflow-hidden flex items-center justify-center order-1 lg:order-1 transition-colors duration-500">
                                 <div class="absolute w-[200%] h-[200%] bg-[radial-gradient(circle,rgba(244,63,94,0.15)_0%,transparent_60%)] animate-spin-reverse"></div>
@@ -750,6 +764,7 @@
                 <!-- Venture 5: Again India (Sankhya AI) -->
                 <div class="hover-glow gsap-flagship tilt-card">
                     <div class="bento-card p-0 interactive border-orange-200 dark:border-orange-900/50">
+                        <div class="module-anim anim-mandala text-orange-500/20 dark:text-orange-400/10 module-bg"></div>
                         <div class="grid grid-cols-1 lg:grid-cols-2 h-full relative z-10 flex-col-reverse lg:flex-row">
                             <div class="p-6 sm:p-8 md:p-12 flex flex-col justify-center pointer-events-none">
                                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-orange-50 dark:bg-cyber-dark border border-orange-200 dark:border-cyber-border text-india-saffron dark:text-orange-400 font-bold text-[10px] uppercase mb-4 md:mb-6 tracking-widest w-fit transition-colors duration-500 shadow-sm">
@@ -784,27 +799,28 @@
         <div class="relative z-10 max-w-4xl mx-auto">
             
             <div class="gsap-footer mb-10 md:mb-12">
-                <h2 class="font-oswald text-4xl sm:text-5xl md:text-[80px] font-black headline-gradient-saffron leading-none uppercase mb-4 tracking-tight transition-colors duration-500">START AUTOMATING.</h2>
+                <h2 class="font-oswald text-4xl sm:text-5xl md:text-[80px] font-black text-india-navy dark:text-white leading-none uppercase mb-2 md:mb-4 tracking-tight transition-colors duration-500">Stop Thinking.</h2>
+                <h2 class="font-oswald text-4xl sm:text-5xl md:text-[80px] font-black headline-gradient leading-none uppercase mb-6 md:mb-8 tracking-tight">Start Automating. ⚡</h2>
                 
-                <p class="text-sm sm:text-base md:text-lg text-slate-600 dark:text-cyber-muted mb-8 md:mb-10 font-inter max-w-2xl mx-auto transition-colors duration-500 px-4">You've seen the arsenal. Now leverage the architect. Let's build a system that scales your business output infinitely.</p>
+                <p class="text-sm sm:text-base md:text-lg text-slate-600 dark:text-cyber-muted mb-8 md:mb-10 font-inter max-w-2xl mx-auto transition-colors duration-500 px-4">You've seen the arsenal. Now leverage the architect. Let's build a system that scales your business output infinitely. 📈</p>
                 
                 <div class="active-glow rounded-lg inline-block w-full sm:w-auto px-6 sm:px-0">
                     <a href="mailto:contact@eastindiaautomation.in" class="btn-primary text-lg md:text-2xl interactive w-full sm:w-auto">
-                        HIRE PROFESSORAI <i class="fa-solid fa-envelope ml-2"></i>
+                        Hire ProfessorAI <i class="fa-solid fa-envelope ml-2"></i>
                     </a>
                 </div>
             </div>
 
             <!-- Animated Social & Project Links (All Clickable Pills) -->
             <div class="gsap-footer flex flex-wrap justify-center gap-3 md:gap-4 mt-12 md:mt-16 mb-12 md:mb-16 px-2">
-                <a href="https://github.com/ProfessorAI" target="_blank" class="social-pill hover-glow interactive flex-grow sm:flex-grow-0 justify-center">
-                    <i class="fa-brands fa-github text-lg md:text-xl social-icon transition-colors"></i> <span class="social-icon transition-colors">ProfessorAI</span>
+                <a href="https://github.com/SocialNOT" target="_blank" class="social-pill hover-glow interactive flex-grow sm:flex-grow-0 justify-center">
+                    <i class="fa-brands fa-github text-lg md:text-xl social-icon transition-colors"></i> <span class="social-icon transition-colors">SocialNOT</span>
                 </a>
-                <a href="https://www.linkedin.com/in/rajib-singh/" target="_blank" class="social-pill hover-glow interactive flex-grow sm:flex-grow-0 justify-center">
-                    <i class="fa-brands fa-linkedin-in text-lg md:text-xl social-icon text-[#0a66c2] dark:text-blue-500 transition-colors"></i> <span class="social-icon transition-colors">Rajib Singh</span>
+                <a href="https://www.linkedin.com/in/professorai/" target="_blank" class="social-pill hover-glow interactive flex-grow sm:flex-grow-0 justify-center">
+                    <i class="fa-brands fa-linkedin-in text-lg md:text-xl social-icon text-[#0a66c2] dark:text-blue-500 transition-colors"></i> <span class="social-icon transition-colors">ProfessorAI</span>
                 </a>
-                <a href="https://x.com/ProfessorAI" target="_blank" class="social-pill hover-glow interactive flex-grow sm:flex-grow-0 justify-center">
-                    <i class="fa-brands fa-x-twitter text-lg md:text-xl social-icon transition-colors"></i> <span class="social-icon transition-colors">@ProfessorAI</span>
+                <a href="https://x.com/ILoveSundarban" target="_blank" class="social-pill hover-glow interactive flex-grow sm:flex-grow-0 justify-center">
+                    <i class="fa-brands fa-x-twitter text-lg md:text-xl social-icon transition-colors"></i> <span class="social-icon transition-colors">@ILoveSundarban</span>
                 </a>
                 <a href="https://www.ilovesundarban.com/" target="_blank" class="social-pill hover-glow interactive flex-grow sm:flex-grow-0 justify-center">
                     <i class="fa-solid fa-heart text-lg md:text-xl social-icon text-rose-500 transition-colors"></i> <span class="font-oswald tracking-widest social-icon transition-colors">SUNDARBAN</span>
@@ -825,9 +841,9 @@
             </div>
 
             <div class="border-t border-india-navy/10 dark:border-cyber-border pt-8 md:pt-10 flex flex-col items-center gsap-footer transition-colors duration-500">
-                <div class="font-oswald text-xl md:text-2xl font-bold tracking-[0.15em] text-india-navy dark:text-cyber-muted mb-1 uppercase transition-colors duration-500">EAST INDIA AUTOMATION</div>
-                <p class="text-slate-500 dark:text-cyber-muted/50 font-inter text-[9px] md:text-[10px] tracking-[0.2em] uppercase font-bold transition-colors duration-500 mt-2">
-                    DESIGNED & DEVELOPED BY <strong class="text-india-saffron dark:text-cyber-cyan transition-colors duration-500">RAJIB SINGH</strong> &copy; <span id="copyright-year">2026</span>
+                <div class="font-oswald text-xl md:text-2xl font-bold tracking-widest text-india-navy dark:text-cyber-muted mb-1 uppercase transition-colors duration-500">EAST INDIA AUTOMATION 🌐</div>
+                <p class="text-slate-500 dark:text-cyber-muted/50 font-inter text-[8px] md:text-[10px] tracking-[0.2em] uppercase font-bold transition-colors duration-500 mt-2">
+                    Designed & Developed by <strong class="text-india-saffron dark:text-cyber-cyan transition-colors duration-500">Rajib Singh</strong> &copy; <span id="copyright-year">2026</span>
                 </p>
             </div>
         </div>
@@ -871,6 +887,42 @@
                 max: 5, speed: 400, glare: true, "max-glare": 0.05, scale: 1.02
             });
         }
+
+        // --- 1. Typing Animation (Adjusted array to prevent breaks) ---
+        const phrases = ["AI Empires. 😈", "Cognitive OS. 🧠", "Workforces. 🌐"];
+        let phraseIndex = 0;
+        let letterIndex = 0;
+        let currentText = "";
+        let isDeleting = false;
+        const typedTextElement = document.getElementById("typed-text");
+
+        function type() {
+            const fullPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                currentText = fullPhrase.substring(0, letterIndex - 1);
+                letterIndex--;
+            } else {
+                currentText = fullPhrase.substring(0, letterIndex + 1);
+                letterIndex++;
+            }
+
+            typedTextElement.textContent = currentText;
+
+            let typeSpeed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && currentText === fullPhrase) {
+                typeSpeed = 2000; 
+                isDeleting = true;
+            } else if (isDeleting && currentText === "") {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 400; 
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+        setTimeout(type, 1000);
 
         // --- 2. Date, Time & Theme Logic ---
         const updateDateTime = () => {
@@ -1078,7 +1130,7 @@
 
             const tlHero = gsap.timeline();
             tlHero.fromTo(".gsap-fade", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 1, ease: "power2.out" })
-                  .fromTo(".gsap-hero", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: "back.out(1.2)" }, "-=0.5");
+                  .fromTo(".gsap-hero", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "back.out(1.2)" }, "-=0.5");
 
             gsap.utils.toArray(".gsap-section").forEach(section => {
                 gsap.fromTo(section, { y: 30, opacity: 0 }, { scrollTrigger: { trigger: section, start: "top 85%" }, y: 0, opacity: 1, duration: 0.8, ease: "power3.out" });
